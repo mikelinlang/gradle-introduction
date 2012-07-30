@@ -1,0 +1,26 @@
+apply plugin: 'java'
+apply plugin: 'eclipse'
+
+repositories {
+	mavenCentral();
+}
+
+dependencies {
+	testCompile 'junit:junit:4.10'
+}
+
+jar {
+	manifest {
+		attributes 'Main-Class': 'com.example.Greeter'
+	}
+}
+
+task zip(type: Zip) {
+	//def dirName = 'Project'
+	//mkdir dirName
+	//archiveName "SimpleJavaProgram.zip"
+	from (file("$buildDir/libs"))
+	from "documents"
+	//into(dirName)
+	//ant.delete(dir: dirName) //new File(dirName).delete()
+}

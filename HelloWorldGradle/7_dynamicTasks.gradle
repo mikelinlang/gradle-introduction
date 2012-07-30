@@ -1,0 +1,7 @@
+4.times { counter ->
+	task "task$counter" << {
+		println "This is task : $counter";	
+	}
+}
+task0.dependsOn task2, task1
+task3.enabled false

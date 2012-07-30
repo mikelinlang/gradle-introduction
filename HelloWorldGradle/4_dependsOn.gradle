@@ -1,0 +1,10 @@
+task compileTestClasses << {
+	println "First compiling test classes"
+}
+task createSchema << {
+	println "Next, creating schema, now ready for load testing.";
+}
+
+task loadTestData(dependsOn: [compileTestClasses, createSchema]) << {
+	println "Finally, running the load tests."
+}

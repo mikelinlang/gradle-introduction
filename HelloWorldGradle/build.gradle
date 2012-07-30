@@ -1,0 +1,43 @@
+defaultTasks 'helloWorld'
+
+task helloWorld << {
+	println "Hello World"	
+}
+
+helloWorld << {
+	println "Hello from Gradle"
+}
+
+task compile << {
+	println "compiling the code..."
+}
+
+task jar(dependsOn: compile) << {
+	println "creating a jar..."
+}
+
+task test << {
+	println "running unit test cases..."
+}
+
+jar.dependsOn test
+
+task dbInsert << {
+	println "inserting in database..."
+}
+
+dbInsert.doFirst {
+	println "creating db schema..."
+}
+
+dbInsert.doLast {
+	println "dropping db schema..."
+}
+
+4.times { counter ->
+	task "task$counter" << {
+		println "This is task number: $counter"
+	}
+}
+task0.dependsOn task1, task3
+task3.enabled = false

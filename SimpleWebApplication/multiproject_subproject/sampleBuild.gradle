@@ -1,0 +1,24 @@
+allprojects {
+	task hello<< { task ->
+		println "I am in $task.project.name"
+	}	
+}
+
+subprojects {
+	
+	repositories {
+		mavenCentral()
+	}
+	
+	hello << {
+		println " and I am a subproject"
+	}
+
+hello.onlyIf{
+		allowHello == 'true'
+	}	
+}
+
+project(':provider').hello << {
+	 println "I am project specific task"
+}

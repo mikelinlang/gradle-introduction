@@ -1,0 +1,5 @@
+defaultTasks 'helloWorld'
+
+task helloWorld << {
+	println "Hello world"
+}

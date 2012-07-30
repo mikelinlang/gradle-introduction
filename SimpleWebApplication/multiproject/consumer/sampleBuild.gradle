@@ -1,0 +1,9 @@
+apply plugin: 'jetty'
+dependencies {
+	compile project (":provider")	
+	compile "javax.servlet:servlet-api:2.5"
+}
+
+repositories {
+	mavenCentral()
+}
